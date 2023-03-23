@@ -7,8 +7,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-           by adsoft <br></br>
-	   Mexico, 2023
+           by adsoft-sito <br></br>
+	   Mexico, 2023, Ver 2.0
         </p>
         <a
           className="App-link"

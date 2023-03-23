@@ -15,9 +15,9 @@ jobs:
           node-version: 16.x
       - name: CI
         run: npm ci
-      - name: Test
-        run: |
-          npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+#      - name: Test
+#        run: |
+#          npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
       - name: make .env 
         uses: SpicyPizza/create-envfile@v1.3
         with:
@@ -37,9 +37,9 @@ jobs:
         run: |
           docker run -d --name serving_base httpd
           
-      - name: cp angular build to container
+      - name: cp react build to container
         run: |
-          docker cp dist/openai/.  serving_base:/usr/local/apache2/htdocs
+          docker cp build/.  serving_base:/usr/local/apache2/htdocs
           
       - name: Build the custom Docker image
         run: docker commit --change "ENV MODEL_NAME ${{secrets.MODEL_NAME}}" serving_base ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github.sha}}
